@@ -1,4 +1,4 @@
-module github.com/yunmoon/itp-request-client/v1
+module github.com/yunmoon/itp-request-client
 
 go 1.16
 

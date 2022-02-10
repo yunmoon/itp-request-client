@@ -7,8 +7,8 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"encoding/base64"
-	"github.com/yunmoon/itp-request-client/v1/pkg/types"
-	"github.com/yunmoon/itp-request-client/v1/pkg/xpem"
+	"github.com/yunmoon/itp-request-client/pkg/types"
+	"github.com/yunmoon/itp-request-client/pkg/xpem"
 	"hash"
 )
 

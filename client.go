@@ -5,9 +5,9 @@ import (
 	"github.com/franela/goreq"
 	"github.com/jmcvetta/randutil"
 	"github.com/pkg/errors"
-	"github.com/yunmoon/itp-request-client/v1/pkg/types"
-	"github.com/yunmoon/itp-request-client/v1/pkg/util"
-	"github.com/yunmoon/itp-request-client/v1/pkg/xrsa"
+	"github.com/yunmoon/itp-request-client/pkg/types"
+	"github.com/yunmoon/itp-request-client/pkg/util"
+	"github.com/yunmoon/itp-request-client/pkg/xrsa"
 	"time"
 )
 

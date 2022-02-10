@@ -4,7 +4,7 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"encoding/base64"
-	"github.com/yunmoon/itp-request-client/v1/pkg/xpem"
+	"github.com/yunmoon/itp-request-client/pkg/xpem"
 )
 
 func RsaEncrypt(str []byte, publicKeyStr string) (string, error) {

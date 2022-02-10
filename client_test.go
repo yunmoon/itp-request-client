@@ -2,7 +2,7 @@ package itp_request_client
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/yunmoon/itp-request-client/v1/pkg/types"
+	"github.com/yunmoon/itp-request-client/pkg/types"
 	"testing"
 )
 
