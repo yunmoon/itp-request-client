@@ -1,0 +1,18 @@
+# Log files
+logs/
+main
+*.log
+# Editor directories and files
+/tmp
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+yarn.lock
+.DS_Store
+__debug_bin
+.vscode/
+uploads/
