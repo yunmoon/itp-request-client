@@ -20,7 +20,7 @@ func TestItpRequestClient_Request(t *testing.T) {
 		ThirdPublicKey(thirdPublicKey),
 		PrivateKey(privateKey),
 		Env(Dev),
-		//Host("http://127.0.0.1"),
+		//Host("http://10.255.50.202:39092"),
 	)
 	if err == nil {
 		respBody := make(types.BodyMap)

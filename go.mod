@@ -9,5 +9,5 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/onsi/gomega v1.17.0 // indirect
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/testify v1.5.1 // indirect
+	github.com/stretchr/testify v1.5.1
 )

@@ -106,6 +106,7 @@ func (client *itpRequestClient) Request(url string, body types.BodyMap, channelU
 		Set("sequence", sequence).
 		Set("random", random).
 		Set("noncestr", nonce).
+		Set("channeluserid", channelUserId).
 		Set("message", body.JsonBody())
 	sign, err := xrsa.GetRsaSign(signBody, xrsa.RSA2, client.opts.PrivateKey)
 	if err != nil {
