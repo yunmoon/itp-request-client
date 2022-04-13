@@ -80,13 +80,14 @@ func (client *itpRequestClient) Request(url string, body types.BodyMap, channelU
 	if client.opts.Host != "" {
 		host = client.opts.Host
 	}
+	bodyJsonStr := body.JsonBody()
 	request := goreq.Request{
 		Method:      "POST",
 		Uri:         fmt.Sprintf("%s%s", host, url),
 		Timeout:     5 * time.Second,
 		ContentType: "application/json",
 		Accept:      "application/json",
-		Body:        body,
+		Body:        bodyJsonStr,
 		Insecure:    true,
 	}
 	if channelUserId != "" {
@@ -107,7 +108,7 @@ func (client *itpRequestClient) Request(url string, body types.BodyMap, channelU
 		Set("random", random).
 		Set("noncestr", nonce).
 		Set("channeluserid", channelUserId).
-		Set("message", body.JsonBody())
+		Set("message", bodyJsonStr)
 	if client.opts.Env != Prod {
 		fmt.Println("加签原始串：", signBody.EncodeURLParams())
 	}

@@ -20,16 +20,16 @@ func TestItpRequestClient_Request(t *testing.T) {
 		ThirdPublicKey(thirdPublicKey),
 		PrivateKey(privateKey),
 		Env(Dev),
-		//Host("http://10.255.50.202:39092"),
+		Host("http://10.255.50.202:39092"),
 	)
 	if err == nil {
 		respBody := make(types.BodyMap)
 		reqBody := make(types.BodyMap)
-		reqBody.Set("mobile", "18780101001")
-		reqBody.Set("certType", 1)
-		reqBody.Set("certNo", "18780101001")
-		reqBody.Set("certName", "测试")
-		err = client.Request("/v1/api/user/sync-user-info", reqBody, "test1", []string{"mobile", "certNo", "certName"}, &respBody)
+		reqBody.Set("title", "测试推送").
+			Set("content", "测试推送11111").
+			Set("pushType", 1).
+			Set("data", "{}")
+		err = client.Request("/v1/api/user/sync-user-info", reqBody, "sdfghgfdsdfg", nil, &respBody)
 		t.Logf("%v", respBody)
 	}
 	assert.NoError(t, err, "err:%v", err)
