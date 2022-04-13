@@ -110,14 +110,14 @@ func (client *itpRequestClient) Request(url string, body types.BodyMap, channelU
 		Set("channeluserid", channelUserId).
 		Set("message", bodyJsonStr)
 	if client.opts.Env != Prod {
-		fmt.Println("加签原始串：", signBody.EncodeURLParams())
+		fmt.Println(signBody.EncodeURLParams())
 	}
 	sign, err := xrsa.GetRsaSign(signBody, xrsa.RSA2, client.opts.PrivateKey)
 	if err != nil {
 		return err
 	}
 	if client.opts.Env != Prod {
-		fmt.Println("签名：", sign)
+		fmt.Println(sign)
 	}
 	request.AddHeader("appid", client.opts.AppId)
 	request.AddHeader("version", client.opts.Version)

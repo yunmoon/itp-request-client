@@ -3,6 +3,7 @@ package types
 import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/errors"
+	"github.com/yunmoon/itp-request-client/pkg/util"
 	"net/url"
 	"sort"
 	"strings"
@@ -79,7 +80,7 @@ func (bm BodyMap) EncodeURLParams() string {
 		return ""
 	}
 	var (
-		buf  strings.Builder
+		str  string
 		keys []string
 	)
 	for k := range bm {
@@ -88,16 +89,14 @@ func (bm BodyMap) EncodeURLParams() string {
 	sort.Strings(keys)
 	for _, k := range keys {
 		if v := bm.GetString(k); v != "" {
-			buf.WriteString(url.QueryEscape(k))
-			buf.WriteByte('=')
-			buf.WriteString(url.QueryEscape(v))
-			buf.WriteByte('&')
+			encodeStr := url.QueryEscape(v)
+			str = util.StrAppend(str, url.QueryEscape(k), "=", encodeStr, "&")
 		}
 	}
-	if buf.Len() <= 0 {
-		return ""
+	if str == "" {
+		return str
 	}
-	return buf.String()[:buf.Len()-1]
+	return str[:len(str)-1]
 }
 
 func (bm BodyMap) CheckEmptyError(keys ...string) error {

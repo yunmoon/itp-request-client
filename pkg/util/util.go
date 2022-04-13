@@ -8,6 +8,14 @@ import (
 	"log"
 )
 
+func StrAppend(origin string, str ...string) string {
+	strBytes := []byte(origin)
+	for _, v := range str {
+		strBytes = append(strBytes, []byte(v)...)
+	}
+	return string(strBytes)
+}
+
 func AesCbcEncrypt(text string, key string, iv string) (string, error) {
 	//生成cipher.Block 数据块
 	block, err := aes.NewCipher([]byte(key))
