@@ -1,13 +1,16 @@
 package itp_request_client
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
-	"github.com/franela/goreq"
 	"github.com/jmcvetta/randutil"
 	"github.com/pkg/errors"
+	"github.com/yunmoon/goreq"
 	"github.com/yunmoon/itp-request-client/pkg/types"
 	"github.com/yunmoon/itp-request-client/pkg/util"
 	"github.com/yunmoon/itp-request-client/pkg/xrsa"
+	"io"
 	"time"
 )
 
@@ -129,5 +132,13 @@ func (client *itpRequestClient) Request(url string, body types.BodyMap, channelU
 	if err != nil {
 		return err
 	}
-	return res.Body.FromJsonTo(resp)
+	bf := bytes.NewBuffer(make([]byte, 4096))
+	_, err = io.Copy(bf, res.Body)
+	if err != nil {
+		return err
+	}
+	if client.opts.Env != Prod {
+		fmt.Println(bf.String())
+	}
+	return json.Unmarshal(bytes.Trim(bf.Bytes(), "\x00"), resp)
 }
